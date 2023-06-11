@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CarProps } from "@/types";
 import { calculateCarRent } from "@/utils";
@@ -16,6 +16,7 @@ const CarCard = ({ car }: CarCardProps) => {
   const carRent = calculateCarRent(city_mpg, year);
 
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => console.log(isOpen), [isOpen])
 
   return (
     <div className="car-card group">
@@ -62,13 +63,13 @@ const CarCard = ({ car }: CarCardProps) => {
         </div>
 
         <div className="car-card__btn-container">
-          <CustomButton 
-            title="View More"
-            containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
-            textStyles="text-white text-[14px] leading-[17px] font-bold"
-            rightIcon="/right-arrow.svg"
-            handleClick={() => setIsOpen(true)}
-          />
+          <button
+            className="w-full py-[16px] rounded-full bg-primary-blue text-white text-[14px] leading-[17px] font-bold flex justify-center items-center gap-3"
+            onClick={() => setIsOpen(true)}
+          >
+            View More
+            <Image src="/right-arrow.svg" width={20} height={20} alt="right" />
+          </button>
         </div>
       </div>
 
