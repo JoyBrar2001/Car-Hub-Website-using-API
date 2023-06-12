@@ -78,6 +78,7 @@ const SearchBar = () => {
         <input 
           type="text" 
           name="model"
+          placeholder="Tiguan"
           value={model}
           onChange={e => setModel(e.target.value)}
           className="searchbar__input"
